@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JScrollPane;
@@ -24,10 +25,19 @@ import javax.swing.JTable;
 
 
 
+
+
+
+
+
+import br.univel.DAO.ClienteDAO;
+import br.univel.Enum.Genero;
+import br.univel.entity.Cliente;
 import br.univel.modelo.ModeloCliente;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.List;
 
 
 
@@ -42,8 +52,10 @@ public class CadastroClienteDialog extends JDialog {
 	private JComboBox  cbxEstado;
 	private JComboBox  cbxGenero;
 	private static ModeloCliente modelo;
+	private static ClienteDAO clienteDao;
 	private JTable table;
-
+	private Cliente cliente = new Cliente();
+	private List<Cliente> listaClientes;
 	/**
 	 * Launch the application.
 	 */
@@ -61,6 +73,12 @@ public class CadastroClienteDialog extends JDialog {
 	 * Create the dialog.
 	 */
 	public CadastroClienteDialog() {
+		carregaGenero();
+		carregaEstado();
+		atualizaTabela();
+		
+		
+		setTitle("Cadastro de Cliente");
 		setBounds(100, 100, 450, 426);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -279,15 +297,31 @@ public class CadastroClienteDialog extends JDialog {
 	
 	}
 
+	private void atualizaTabela() {
+		table.setModel(new ModeloCliente(clienteDao.listaClientes()));	
+	}
+
+	private void carregaEstado() {
+		cbxEstado.setModel(new DefaultComboBoxModel(Genero.values()));
+		cbxEstado.addItem(null);
+		cbxEstado.setSelectedIndex(cbxGenero.getItemCount() - 1);
+		}
+
+	private void carregaGenero() {
+		cbxGenero.setModel(new DefaultComboBoxModel(Genero.values()));
+		cbxGenero.addItem(null);
+		cbxGenero.setSelectedIndex(cbxGenero.getItemCount() - 1);
+	}
+
 	protected void limpaCampos() {
 		txtNome.setText("");
 		txtTelefone.setText("");
 		txtCidade.setText("");
 		txtEndereco.setText("");
 		txtEmail.setText("");
-		cbxEstado.setSelectedIndex(comboEstado.getItemCount() - 1);
-		cbxGenero.setSelectedIndex(comboGenero.getItemCount() - 1);
-		cliente = new Cliente();
+		cbxEstado.setSelectedIndex(cbxEstado.getItemCount() - 1);
+		cbxGenero.setSelectedIndex(cbxGenero.getItemCount() - 1);
+		Cliente cliente = new Cliente();
 	}
 
 }
