@@ -6,6 +6,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
 import br.univel.Enum.Categoria;
+import br.univel.Enum.Genero;
 import br.univel.Enum.Unidade;
 
 public class Produto {
@@ -50,7 +51,16 @@ public class Produto {
 	public void setMargemLucro(BigDecimal margemLucro) {
 		this.margemLucro = margemLucro;
 	}
-	
-	
-	
+	public Categoria getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+	public Unidade getUnidade() {
+		return unidade;
+	}
+	public void setUnidade(Unidade unidade) {
+		this.unidade = unidade;
+	}
 }

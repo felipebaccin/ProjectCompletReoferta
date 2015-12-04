@@ -27,12 +27,12 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import br.univel.DAO.ClienteDAO;
 import br.univel.DAO.ProdutoDAO;
 import br.univel.Enum.Categoria;
+import br.univel.Enum.Estado;
 import br.univel.Enum.Genero;
 import br.univel.Enum.Unidade;
-import br.univel.entity.Cliente;
+import br.univel.entity.Produto;
 import br.univel.entity.Produto;
 import br.univel.modelo.ModeloProduto;
 import br.univel.modelo.Validador;
@@ -302,11 +302,54 @@ public class CadastroProdutoDialog extends JDialog {
 		}
 	}
 	protected void excluir() {
-		// TODO Auto-generated method stub
-		
+		int dialogButton = JOptionPane.YES_NO_OPTION;
+		int result = JOptionPane.showConfirmDialog(null,
+				"Deseja excluir a produto " + produto.getDescricao() + "?",
+				"Deseja realizar essa opera��o?", dialogButton);
+
+		if (result == JOptionPane.YES_OPTION) {
+			ProdutoDAO dao = new ProdutoDAO();
+			if (dao.deletar(produto.getId()) == "NO") {
+				JOptionPane.showMessageDialog(null,
+						"N�o foi possivel excluir essa Produto",
+						"Problemas ao Excluir", result);
+				return;
+			} else {
+
+				JOptionPane.showMessageDialog(null,
+						"Exclusao feita com sucesso");
+
+
+				
+
+			}
+
+		}
 	}
 	protected void salvar() {
-		// TODO Auto-generated method stub
+		try {
+
+			Produto p = new Produto();
+			p.setDescricao(txtDescricao.getText());
+			p.setCodigoBarras(Integer.parseInt(txtCodigo.getText()));
+			//p.setCusto(txtCusto.getText());
+			//p.setMargemLucro(txtLucro.getText());
+
+
+//			p.setUnidade((Unidade) cbxUnidade.getSelectedItem());
+//			p.setCategoria((Categoria) cbxTipo.getSelectedItem());
+
+			produtoDao.inserir(p);
+
+			mp.fireTableDataChanged();
+
+			JOptionPane.showMessageDialog(null,
+					"Produto cadastrada com sucesso");
+			limpaCampos();
+
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Erro ao cadastrar categoria");
+		}
 		
 	}
 	protected void carregaLista() {
@@ -336,9 +379,9 @@ public class CadastroProdutoDialog extends JDialog {
 		txtDescricao.setText("");
 		txtCusto.setText("");
 		txtLucro.setText("");
-		cbxUnidade.setSelectedIndex(cbxEstado.getItemCount() - 1);
-		cbxGenero.setSelectedIndex(cbxGenero.getItemCount() - 1);
-		Cliente cliente = new Cliente();
+		cbxUnidade.setSelectedIndex(cbxUnidade.getItemCount() - 1);
+		cbxTipo.setSelectedIndex(cbxTipo.getItemCount() - 1);
+		Produto p = new Produto();
 		
 	}
 
