@@ -13,11 +13,11 @@ import br.univel.entity.Cliente;
 
 public class ClienteDAO {
 	
-	Connection con = ConexaoSing.con;
-	PreparedStatement stmt;
+	static Connection con = ConexaoSing.con;
+	static PreparedStatement stmt;
 	String sql;
 
-	public List<Cliente> listaClientes() {
+	public static List<Cliente> listaClientes() {
 		try {
 			String sql = "select idCliente,nome,telefone,email,endereco,cidade";
 			stmt = con.prepareStatement(sql);

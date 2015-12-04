@@ -8,12 +8,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+
 import br.univel.entity.Produto;
 
 public class ProdutoDAO {
 
-	Connection con = ConexaoSing.con;
-	PreparedStatement stmt;
+	static Connection con = ConexaoSing.con;
+	static PreparedStatement stmt;
 	String sql;
 	
 	
@@ -28,7 +31,7 @@ public class ProdutoDAO {
 //			)
 	
 
-	public List<Produto> listaprodutos() {
+	public static  List<Produto> listaprodutos() {
 		try {
 			String sql = "select id,codigo_barras,descricao,custo,margem_lucro,unidade,categoria";
 			stmt = con.prepareStatement(sql);
@@ -94,5 +97,23 @@ public class ProdutoDAO {
 			return "NO";
 		}
 	}
+
+	public static Produto getProduto(String descricao){
+		EntityManager em = Conexao.getEntityManager();
+		
+		try {
+			Produto produto =  em.createQuery("select c from Produto c where c.descricao =:descricao", Produto.class).setParameter("descricao", descricao).getSingleResult();
+			return produto;
+		} catch (NoResultException e) {
+			System.out.println(e);
+			return null;
+		} finally {
+            em.close();
+        }
+		
+	   
+	}
+
+	
 	
 }
