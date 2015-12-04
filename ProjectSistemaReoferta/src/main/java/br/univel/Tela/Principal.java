@@ -71,7 +71,7 @@ public class Principal extends JFrame {
 		JMenuItem mntmVendaDeProduto = new JMenuItem("Venda de produto ");
 		mntmVendaDeProduto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VendaDialog vd = new VendaDialog();
+				TelaVenda vd = new TelaVenda();
 				setVisible(true);
 			}
 		});
