@@ -1,11 +1,8 @@
-package br.univel.Tela;
+package br.univel.modelo;
 
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
-
-import br.univel.model.TransacaoVendaItem;
-import br.univel.model.Usuario;
 
 public class TableModelVendaItem extends AbstractTableModel{
 
