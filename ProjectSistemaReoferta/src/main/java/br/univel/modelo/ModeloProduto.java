@@ -8,8 +8,16 @@ import br.univel.entity.*;
 
 public class ModeloProduto extends AbstractTableModel {
 
-	List<Produto> produtos;
+	private List<Produto> produtos;
 	
+	public List<Produto> getProdutos() {
+		return produtos;
+	}
+
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
+	}
+
 	public void ModelCliente(List<Produto> produtos) {
 		this.produtos = produtos;
 	}

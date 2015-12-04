@@ -28,6 +28,7 @@ import br.univel.Enum.Estado;
 import br.univel.Enum.Genero;
 import br.univel.entity.Cliente;
 import br.univel.modelo.ModeloCliente;
+import br.univel.modelo.ModeloProduto;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -70,6 +71,8 @@ public class CadastroClienteDialog extends JDialog {
 		carregaEstado();
 		// atualizaTabela();
 
+		ModeloProduto m = new ModeloProduto();
+		
 		setTitle("Cadastro de Cliente");
 
 		setBounds(100, 100, 450, 426);
