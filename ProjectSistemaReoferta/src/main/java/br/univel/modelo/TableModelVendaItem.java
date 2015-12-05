@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+import br.univel.utils.TransacaoVendaItem;
+
 public class TableModelVendaItem extends AbstractTableModel{
 
 private static final long serialVersionUID = 1L;

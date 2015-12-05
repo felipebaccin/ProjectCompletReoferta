@@ -35,7 +35,7 @@ import br.univel.Enum.Unidade;
 import br.univel.entity.Produto;
 import br.univel.entity.Produto;
 import br.univel.modelo.ModeloProduto;
-import br.univel.modelo.Validador;
+import br.univel.utils.Validador;
 
 public class CadastroProdutoDialog extends JDialog {
 	

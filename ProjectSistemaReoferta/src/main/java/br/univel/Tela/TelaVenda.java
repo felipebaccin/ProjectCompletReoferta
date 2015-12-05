@@ -28,8 +28,8 @@ import br.univel.DAO.ProdutoDAO;
 import br.univel.entity.Cliente;
 import br.univel.entity.Produto;
 import br.univel.modelo.TableModelVendaItem;
-import br.univel.modelo.TransacaoVenda;
-import br.univel.modelo.TransacaoVendaItem;
+import br.univel.utils.TransacaoVenda;
+import br.univel.utils.TransacaoVendaItem;
 
 public class TelaVenda extends JDialog {
 

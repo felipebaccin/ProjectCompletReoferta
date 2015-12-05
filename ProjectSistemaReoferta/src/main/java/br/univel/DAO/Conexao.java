@@ -15,17 +15,6 @@ public class Conexao {
 
 	private static EntityManagerFactory fabrica;
 
-	static {
-		fabrica = Persistence.createEntityManagerFactory("java2trab4bim");
-	}
-
-	public static EntityManager getEntityManager() {
-		return fabrica.createEntityManager();
-	}
-
-	public static void fechar() {
-		fabrica.close();
-	}
 
 	private static final String DRIVER = "org.postgres.jdbc.Driver";
 	private static final String URL = "jdbc:postgres://localhost:8400/projectSistemaReoferta";
@@ -61,4 +50,15 @@ public class Conexao {
 		return null;
 	}
 
+	static {
+		fabrica = Persistence.createEntityManagerFactory("java2trab4bim");
+	}
+	
+	public static EntityManager getEntityManager() {
+		return fabrica.createEntityManager();
+	}
+	
+	public static void fechar() {
+		fabrica.close();
+	}
 }

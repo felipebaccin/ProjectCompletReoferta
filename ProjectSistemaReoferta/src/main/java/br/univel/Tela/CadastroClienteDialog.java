@@ -42,8 +42,8 @@ public class CadastroClienteDialog extends JDialog {
 	private JTextField txtCidade;
 	private JTextField txtEndereco;
 	private JTextField txtEmail;
-	private JComboBox cbxEstado;
-	private JComboBox cbxGenero;
+//	private JComboBox cbxEstado;
+//	private JComboBox cbxGenero;
 	private static ModeloCliente modelo;
 	private static ClienteDAO clienteDao;
 	private JTable table;
@@ -67,11 +67,11 @@ public class CadastroClienteDialog extends JDialog {
 	 * Create the dialog.
 	 */
 	public CadastroClienteDialog() {
-		carregaGenero();
-		carregaEstado();
+//		carregaGenero();
+//		carregaEstado();
 		// atualizaTabela();
 
-		ModeloProduto m = new ModeloProduto();
+		ModeloCliente m = new ModeloCliente();
 		
 		setTitle("Cadastro de Cliente");
 
@@ -132,13 +132,13 @@ public class CadastroClienteDialog extends JDialog {
 		gbc_lblGenero.gridy = 2;
 		contentPanel.add(lblGenero, gbc_lblGenero);
 
-		JComboBox cbxGenero = new JComboBox();
-		GridBagConstraints gbc_cbxGenero = new GridBagConstraints();
-		gbc_cbxGenero.insets = new Insets(0, 0, 5, 0);
-		gbc_cbxGenero.fill = GridBagConstraints.HORIZONTAL;
-		gbc_cbxGenero.gridx = 1;
-		gbc_cbxGenero.gridy = 2;
-		contentPanel.add(cbxGenero, gbc_cbxGenero);
+//		JComboBox cbxGenero = new JComboBox();
+//		GridBagConstraints gbc_cbxGenero = new GridBagConstraints();
+//		gbc_cbxGenero.insets = new Insets(0, 0, 5, 0);
+//		gbc_cbxGenero.fill = GridBagConstraints.HORIZONTAL;
+//		gbc_cbxGenero.gridx = 1;
+//		gbc_cbxGenero.gridy = 2;
+//		contentPanel.add(cbxGenero, gbc_cbxGenero);
 
 		JLabel lblEmail = new JLabel("Email");
 		GridBagConstraints gbc_lblEmail = new GridBagConstraints();
@@ -192,21 +192,21 @@ public class CadastroClienteDialog extends JDialog {
 		contentPanel.add(txtEndereco, gbc_txtEndereco);
 		txtEndereco.setColumns(10);
 
-		JLabel lblEstado = new JLabel("Estado");
-		GridBagConstraints gbc_lblEstado = new GridBagConstraints();
-		gbc_lblEstado.anchor = GridBagConstraints.EAST;
-		gbc_lblEstado.insets = new Insets(0, 0, 5, 5);
-		gbc_lblEstado.gridx = 0;
-		gbc_lblEstado.gridy = 6;
-		contentPanel.add(lblEstado, gbc_lblEstado);
-
-		JComboBox cbxEstado = new JComboBox();
-		GridBagConstraints gbc_cbxEstado = new GridBagConstraints();
-		gbc_cbxEstado.insets = new Insets(0, 0, 5, 0);
-		gbc_cbxEstado.fill = GridBagConstraints.HORIZONTAL;
-		gbc_cbxEstado.gridx = 1;
-		gbc_cbxEstado.gridy = 6;
-		contentPanel.add(cbxEstado, gbc_cbxEstado);
+//		JLabel lblEstado = new JLabel("Estado");
+//		GridBagConstraints gbc_lblEstado = new GridBagConstraints();
+//		gbc_lblEstado.anchor = GridBagConstraints.EAST;
+//		gbc_lblEstado.insets = new Insets(0, 0, 5, 5);
+//		gbc_lblEstado.gridx = 0;
+//		gbc_lblEstado.gridy = 6;
+//		contentPanel.add(lblEstado, gbc_lblEstado);
+//
+//		JComboBox cbxEstado = new JComboBox();
+//		GridBagConstraints gbc_cbxEstado = new GridBagConstraints();
+//		gbc_cbxEstado.insets = new Insets(0, 0, 5, 0);
+//		gbc_cbxEstado.fill = GridBagConstraints.HORIZONTAL;
+//		gbc_cbxEstado.gridx = 1;
+//		gbc_cbxEstado.gridy = 6;
+//		contentPanel.add(cbxEstado, gbc_cbxEstado);
 
 		JPanel panel = new JPanel();
 		GridBagConstraints gbc_panel = new GridBagConstraints();
@@ -231,6 +231,7 @@ public class CadastroClienteDialog extends JDialog {
 		panel.add(scrollPane, gbc_scrollPane);
 
 		table = new JTable();
+		ModeloCliente modelo = new ModeloCliente();
 		table.setModel(modelo);
 		scrollPane.setViewportView(table);
 
@@ -312,9 +313,9 @@ public class CadastroClienteDialog extends JDialog {
 
 	}
 
-	// private void atualizaTabela() {
-	// table.setModel(new ModeloCliente(clienteDao.listaClientes()));
-	// }
+//	 private void atualizaTabela() {
+//	 table.setModel(new ModeloCliente(clienteDao.listaClientes()));
+//	 }
 
 	protected void Excluir() {
 		
@@ -354,8 +355,8 @@ public class CadastroClienteDialog extends JDialog {
 			c.setEndereco(txtEndereco.getText());
 			c.setCidade(txtCidade.getText());
 
-			c.setEstado((Estado) cbxEstado.getSelectedItem());
-			c.setGenero((Genero) cbxGenero.getSelectedItem());
+//			c.setEstado((Estado) cbxEstado.getSelectedItem());
+//			c.setGenero((Genero) cbxGenero.getSelectedItem());
 
 			clienteDao.inserir(c);
 
@@ -370,17 +371,17 @@ public class CadastroClienteDialog extends JDialog {
 		}
 	}
 
-	private void carregaEstado() {
-		cbxEstado.setModel(new DefaultComboBoxModel(Genero.values()));
-		cbxEstado.addItem(null);
-		cbxEstado.setSelectedIndex(cbxGenero.getItemCount() - 1);
-	}
-
-	private void carregaGenero() {
-		cbxGenero.setModel(new DefaultComboBoxModel(Genero.values()));
-		cbxGenero.addItem(null);
-		cbxGenero.setSelectedIndex(cbxGenero.getItemCount() - 1);
-	}
+//	private void carregaEstado() {
+//		cbxEstado.setModel(new DefaultComboBoxModel(Genero.values()));
+//		cbxEstado.addItem(null);
+//		cbxEstado.setSelectedIndex(cbxGenero.getItemCount() - 1);
+//	}
+//
+//	private void carregaGenero() {
+//		cbxGenero.setModel(new DefaultComboBoxModel(Genero.values()));
+//		cbxGenero.addItem(null);
+//		cbxGenero.setSelectedIndex(cbxGenero.getItemCount() - 1);
+//	}
 
 	protected void limpaCampos() {
 		txtNome.setText("");
@@ -388,8 +389,8 @@ public class CadastroClienteDialog extends JDialog {
 		txtCidade.setText("");
 		txtEndereco.setText("");
 		txtEmail.setText("");
-		cbxEstado.setSelectedIndex(cbxEstado.getItemCount() - 1);
-		cbxGenero.setSelectedIndex(cbxGenero.getItemCount() - 1);
+//		cbxEstado.setSelectedIndex(cbxEstado.getItemCount() - 1);
+//		cbxGenero.setSelectedIndex(cbxGenero.getItemCount() - 1);
 		Cliente cliente = new Cliente();
 	}
 
