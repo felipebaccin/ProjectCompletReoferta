@@ -69,7 +69,7 @@ public class CadastroClienteDialog extends JDialog {
 	public CadastroClienteDialog() {
 //		carregaGenero();
 //		carregaEstado();
-		// atualizaTabela();
+// 	    atualizaTabela();
 
 		ModeloCliente m = new ModeloCliente();
 		

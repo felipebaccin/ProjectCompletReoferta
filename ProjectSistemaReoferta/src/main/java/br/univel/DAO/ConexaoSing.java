@@ -18,7 +18,7 @@ public class ConexaoSing {
 	public static Connection conectar() {
 		try {
 
-			String url = "jdbc:postgresql://localhost:8400/projectSistemaReoferta";
+			String url = "jdbc:postgresql://localhost:5432/projectSistemaReoferta";
 			String usuario = "postgres";
 			String senha = "postgres";
 

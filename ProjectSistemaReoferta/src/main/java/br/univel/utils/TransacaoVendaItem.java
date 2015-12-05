@@ -22,7 +22,7 @@ public class TransacaoVendaItem {
 
 	private int idProduto;
 	private String descricaoProduto;
-	private BigDecimal vlProduto;
+	private int vlProduto;
 	private int quantidade;
 
 	public int getId() {
@@ -49,10 +49,10 @@ public class TransacaoVendaItem {
 	public void setDescricaoProduto(String descricaoProduto) {
 		this.descricaoProduto = descricaoProduto;
 	}
-	public BigDecimal getVlProduto() {
+	public int getVlProduto() {
 		return vlProduto;
 	}
-	public void setVlProduto(BigDecimal vlProduto) {
+	public void setVlProduto(int vlProduto) {
 		this.vlProduto = vlProduto;
 	}
 	public int getQuantidade() {

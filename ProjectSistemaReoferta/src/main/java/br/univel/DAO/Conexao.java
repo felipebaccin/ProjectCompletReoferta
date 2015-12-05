@@ -17,7 +17,7 @@ public class Conexao {
 
 
 	private static final String DRIVER = "org.postgres.jdbc.Driver";
-	private static final String URL = "jdbc:postgres://localhost:8400/projectSistemaReoferta";
+	private static final String URL = "jdbc:postgres://localhost:5432/projectSistemaReoferta";
 	private static final String SENHA = "postgres";
 	private static final String USUARIO = "postgres";
 

@@ -14,8 +14,8 @@ public class Produto {
 	private int id; 
 	private int codigoBarras;
 	private String descricao;
-	private BigDecimal custo;
-	private BigDecimal margemLucro;
+	private int custo;
+	private int margemLucro;
 	@Enumerated(EnumType.STRING)
 	Categoria categoria;
 	@Enumerated(EnumType.STRING)
@@ -39,16 +39,16 @@ public class Produto {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public BigDecimal getCusto() {
+	public int getCusto() {
 		return custo;
 	}
-	public void setCusto(BigDecimal custo) {
+	public void setCusto(int custo) {
 		this.custo = custo;
 	}
-	public BigDecimal getMargemLucro() {
+	public int getMargemLucro() {
 		return margemLucro;
 	}
-	public void setMargemLucro(BigDecimal margemLucro) {
+	public void setMargemLucro(int margemLucro) {
 		this.margemLucro = margemLucro;
 	}
 	public Categoria getCategoria() {

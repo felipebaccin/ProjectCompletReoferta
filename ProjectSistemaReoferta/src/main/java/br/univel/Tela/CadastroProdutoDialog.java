@@ -47,8 +47,8 @@ public class CadastroProdutoDialog extends JDialog {
 	private JTextField txtCodigo;
 	private JTextField txtCusto;
 	private JTextField txtLucro;
-	private JComboBox cbxUnidade;
-	private JComboBox cbxTipo;
+//	private JComboBox cbxUnidade;
+//	private JComboBox cbxTipo;
 	private static ProdutoDAO produtoDao;
 	private JTable table;
 
@@ -74,8 +74,8 @@ public class CadastroProdutoDialog extends JDialog {
 			@Override
 			public void windowActivated(WindowEvent arg0) {
 				txtCodigo.requestFocus();
-				carregaCategoria();
-				carregaUnidade();
+//				carregaCategoria();
+//				carregaUnidade();
 			//	atualizaTabela();
 				
 				setTitle("Cadastro de Produto");
@@ -168,44 +168,44 @@ public class CadastroProdutoDialog extends JDialog {
 			getContentPane().add(txtLucro, gbc_txtLucro);
 			txtLucro.setColumns(10);
 		}
-		{
-			JLabel lblUnidade = new JLabel("Unidade");
-			GridBagConstraints gbc_lblUnidade = new GridBagConstraints();
-			gbc_lblUnidade.anchor = GridBagConstraints.EAST;
-			gbc_lblUnidade.insets = new Insets(0, 0, 5, 5);
-			gbc_lblUnidade.gridx = 0;
-			gbc_lblUnidade.gridy = 4;
-			getContentPane().add(lblUnidade, gbc_lblUnidade);
-		}
-		{
-			JComboBox cbxUnidade = new JComboBox();
-			cbxUnidade.setName("UNIDADE");
-			GridBagConstraints gbc_cbxUnidade = new GridBagConstraints();
-			gbc_cbxUnidade.insets = new Insets(0, 0, 5, 0);
-			gbc_cbxUnidade.fill = GridBagConstraints.HORIZONTAL;
-			gbc_cbxUnidade.gridx = 1;
-			gbc_cbxUnidade.gridy = 4;
-			getContentPane().add(cbxUnidade, gbc_cbxUnidade);
-		}
-		{
-			JLabel lblCategoria = new JLabel("Categoria");
-			GridBagConstraints gbc_lblCategoria = new GridBagConstraints();
-			gbc_lblCategoria.anchor = GridBagConstraints.EAST;
-			gbc_lblCategoria.insets = new Insets(0, 0, 5, 5);
-			gbc_lblCategoria.gridx = 0;
-			gbc_lblCategoria.gridy = 5;
-			getContentPane().add(lblCategoria, gbc_lblCategoria);
-		}
-		{
-			JComboBox cbxCategoria = new JComboBox();
-			cbxCategoria.setName("TIPO");
-			GridBagConstraints gbc_cbxCategoria = new GridBagConstraints();
-			gbc_cbxCategoria.insets = new Insets(0, 0, 5, 0);
-			gbc_cbxCategoria.fill = GridBagConstraints.HORIZONTAL;
-			gbc_cbxCategoria.gridx = 1;
-			gbc_cbxCategoria.gridy = 5;
-			getContentPane().add(cbxCategoria, gbc_cbxCategoria);
-		}
+//		{
+//			JLabel lblUnidade = new JLabel("Unidade");
+//			GridBagConstraints gbc_lblUnidade = new GridBagConstraints();
+//			gbc_lblUnidade.anchor = GridBagConstraints.EAST;
+//			gbc_lblUnidade.insets = new Insets(0, 0, 5, 5);
+//			gbc_lblUnidade.gridx = 0;
+//			gbc_lblUnidade.gridy = 4;
+//			getContentPane().add(lblUnidade, gbc_lblUnidade);
+//		}
+//		{
+//			JComboBox cbxUnidade = new JComboBox();
+//			cbxUnidade.setName("UNIDADE");
+//			GridBagConstraints gbc_cbxUnidade = new GridBagConstraints();
+//			gbc_cbxUnidade.insets = new Insets(0, 0, 5, 0);
+//			gbc_cbxUnidade.fill = GridBagConstraints.HORIZONTAL;
+//			gbc_cbxUnidade.gridx = 1;
+//			gbc_cbxUnidade.gridy = 4;
+//			getContentPane().add(cbxUnidade, gbc_cbxUnidade);
+//		}
+//		{
+//			JLabel lblCategoria = new JLabel("Categoria");
+//			GridBagConstraints gbc_lblCategoria = new GridBagConstraints();
+//			gbc_lblCategoria.anchor = GridBagConstraints.EAST;
+//			gbc_lblCategoria.insets = new Insets(0, 0, 5, 5);
+//			gbc_lblCategoria.gridx = 0;
+//			gbc_lblCategoria.gridy = 5;
+//			getContentPane().add(lblCategoria, gbc_lblCategoria);
+//		}
+//		{
+//			JComboBox cbxCategoria = new JComboBox();
+//			cbxCategoria.setName("TIPO");
+//			GridBagConstraints gbc_cbxCategoria = new GridBagConstraints();
+//			gbc_cbxCategoria.insets = new Insets(0, 0, 5, 0);
+//			gbc_cbxCategoria.fill = GridBagConstraints.HORIZONTAL;
+//			gbc_cbxCategoria.gridx = 1;
+//			gbc_cbxCategoria.gridy = 5;
+//			getContentPane().add(cbxCategoria, gbc_cbxCategoria);
+//		}
 		{
 			JPanel panel = new JPanel();
 			GridBagConstraints gbc_panel = new GridBagConstraints();
@@ -332,8 +332,8 @@ public class CadastroProdutoDialog extends JDialog {
 			Produto p = new Produto();
 			p.setDescricao(txtDescricao.getText());
 			p.setCodigoBarras(Integer.parseInt(txtCodigo.getText()));
-			//p.setCusto(txtCusto.getText());
-			//p.setMargemLucro(txtLucro.getText());
+			p.setCusto(Integer.parseInt(txtCusto.getText()));
+			p.setMargemLucro(Integer.parseInt(txtLucro.getText()));
 
 
 //			p.setUnidade((Unidade) cbxUnidade.getSelectedItem());
@@ -348,7 +348,7 @@ public class CadastroProdutoDialog extends JDialog {
 			limpaCampos();
 
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Erro ao cadastrar categoria");
+			JOptionPane.showMessageDialog(null, "Erro ao cadastrar Produto");
 		}
 		
 	}
@@ -360,28 +360,28 @@ public class CadastroProdutoDialog extends JDialog {
 
 	
 
-	protected void carregaUnidade() {
-		cbxUnidade.setModel(new DefaultComboBoxModel(Genero.values()));
-		cbxUnidade.addItem(null);
-		cbxUnidade.setSelectedIndex(cbxUnidade.getItemCount() - 1);
-	
-		
-	}
-
-	protected void carregaCategoria() {
-		cbxTipo.setModel(new DefaultComboBoxModel(Genero.values()));
-		cbxTipo.addItem(null);
-		cbxTipo.setSelectedIndex(cbxTipo.getItemCount() - 1);
-	
-	}
+//	protected void carregaUnidade() {
+//		cbxUnidade.setModel(new DefaultComboBoxModel(Genero.values()));
+//		cbxUnidade.addItem(null);
+//		cbxUnidade.setSelectedIndex(cbxUnidade.getItemCount() - 1);
+//	
+//		
+//	}
+//
+//	protected void carregaCategoria() {
+//		cbxTipo.setModel(new DefaultComboBoxModel(Genero.values()));
+//		cbxTipo.addItem(null);
+//		cbxTipo.setSelectedIndex(cbxTipo.getItemCount() - 1);
+//	
+//	}
 
 	protected void limpaCampos() {
 		txtDescricao.setText("");
 		txtCusto.setText("");
 		txtLucro.setText("");
-		cbxUnidade.setSelectedIndex(cbxUnidade.getItemCount() - 1);
-		cbxTipo.setSelectedIndex(cbxTipo.getItemCount() - 1);
-		Produto p = new Produto();
+//		cbxUnidade.setSelectedIndex(cbxUnidade.getItemCount() - 1);
+//		cbxTipo.setSelectedIndex(cbxTipo.getItemCount() - 1);
+	//	Produto p = new Produto();
 		
 	}
 

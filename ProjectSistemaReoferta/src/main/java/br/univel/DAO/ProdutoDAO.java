@@ -33,7 +33,7 @@ public class ProdutoDAO {
 
 	public static  List<Produto> listaprodutos() {
 		try {
-			String sql = "select id,codigo_barras,descricao,custo,margem_lucro,unidade,categoria";
+			String sql = "select id,codigo_barras,descricao,custo,margem_lucro";
 			stmt = con.prepareStatement(sql);
 			ResultSet result = stmt.executeQuery();
 			List<Produto> produtos = new ArrayList<Produto>();
@@ -43,8 +43,8 @@ public class ProdutoDAO {
 				p.setCodigoBarras(new Integer(result.getInt(2)));
 				//c.setGenero(result.getString(3));
 				p.setDescricao(result.getString(3));
-				p.setCusto(new BigDecimal(result.getDouble(4)));
-				p.setMargemLucro(new BigDecimal(result.getDouble(5)));
+				p.setCusto(new Integer(result.getInt(4)));
+				p.setMargemLucro(new Integer(result.getInt(5)));
 			//	p.(result.getString(6));
 				//c.setEstado(result.getString(8));
 				
@@ -63,12 +63,12 @@ public class ProdutoDAO {
 	public String inserir(Produto p) {
 		try {
 			
-			sql = "insert into produto(codigo_barras,descricao,custo,margem_lucro) values (?,?,?,?,?);";
+			sql = "insert into produto(codigo_barras,descricao,custo,margem_lucro) values (?,?,?,?);";
 			stmt = con.prepareStatement(sql);
 			stmt.setInt(1, p.getCodigoBarras());
 			stmt.setString(2, p.getDescricao());
-			stmt.setBigDecimal(3, p.getCusto());
-			stmt.setBigDecimal(4,p.getMargemLucro());
+			stmt.setInt(3, p.getCusto());
+			stmt.setInt(4,p.getMargemLucro());
 			//stmt.set(5, p.getEmail());
 			stmt.executeUpdate();
 			stmt.close();
